@@ -105,11 +105,20 @@
     //
     // test if a specific column on this board contains a conflict
     hasColConflictAt: function(colIndex) {
-      return false; // fixme
+
+      //set counter var
+      //use for key in Board loop. iterate through Board.key[colIndex].
+      //increment counter 
+      //if counter > 1, return true
+      //else false
+      return false; 
     },
 
     // test if any columns on this board contain conflicts
     hasAnyColConflicts: function() {
+      //calls hasColConflictAt n times
+      //if method returns true, return true
+      //return false if none
       return false; // fixme
     },
 
