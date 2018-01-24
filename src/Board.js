@@ -91,7 +91,11 @@
 
     // test if any rows on this board contain conflicts
     hasAnyRowConflicts: function() {
-      return false; // fixme
+      //iterating through board array by array[i][j]
+      //calls hasRowConflictAt for each row
+      //for board[i][j], if true, return true
+      //else return false
+      return false; 
     },
 
 
