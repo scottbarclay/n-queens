@@ -79,6 +79,13 @@
     //
     // test if a specific row on this board contains a conflict
     hasRowConflictAt: function(rowIndex) {
+      //set count var as container
+      //iterating through row
+      //if row index _isInBounds then we do our iteration
+
+      //if true, increment counter
+      //if counter > 1, return true to indicate conflict
+      //return false
       return false; // fixme
     },
 
