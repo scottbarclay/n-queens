@@ -116,10 +116,11 @@
 
     // test if any columns on this board contain conflicts
     hasAnyColConflicts: function() {
+      //var board = this.get('n')
       //calls hasColConflictAt n times
       //if method returns true, return true
       //return false if none
-      return false; // fixme
+      return false;
     },
 
 
