@@ -152,12 +152,17 @@
     //
     // test if a specific minor diagonal on this board contains a conflict
     hasMinorDiagonalConflictAt: function(minorDiagonalColumnIndexAtFirstRow) {
-      return false; // fixme
+      //set counter  
+      //incrementing row and decrementing cols, board[i][minor Idx - 1]
+      //if value is true, increment counter, if counter > 1, return true
+      //return false if none
+      return false; 
     },
 
     // test if any minor diagonals on this board contain conflicts
     hasAnyMinorDiagonalConflicts: function() {
-      return false; // fixme
+      
+      return false;
     }
 
     /*--------------------  End of Helper Functions  ---------------------*/
