@@ -79,33 +79,48 @@
     //
     // test if a specific row on this board contains a conflict
     hasRowConflictAt: function(rowIndex) {
-      //set count var
-      var counter = 0;
-      //iterating through row
-      //if row index _isInBounds then we do our iteration
-      this.get('n');
-      
-      if (rowIndex < n) {
-        for (var i = 0; i < n; i++) {
-          if (rowIndex[i] === 0) {
-            //if true, increment counter
-            //if counter > 1, return true to indicate conflict
+      // if rowIndex is in bounds of board
+      var size = this.get(rowIndex).length;
+      if (rowIndex < size) {
+        // set counter to 0
+        var counter = 0;
+        // get row at rowIndex
+        var row = this.get(rowIndex);
+        // for each column in row
+        for (var col = 0; col < size; col++) {
+          //   if there is a piece, increment counter
+          if (row[col] === 1) {
             counter++;
-            return counter > 1;
+            // if counter > 1, return true
+            if (counter > 1) {
+              return true;
+            }
           }
         }   
       }
-      //return false
-      // return counter > 1; 
+      // else return false      
       return false;
     },
 
     // test if any rows on this board contain conflicts
     hasAnyRowConflicts: function() {
+      // debugger;
       //iterating through board array by array[i][j]
       //calls hasRowConflictAt for each row
       //for board[i][j], if true, return true
       //else return false
+      var size = this.length;
+      var counter = 0;
+  
+      for (var i = 0; i < size; i++) {
+        if (hasRowConflict(Board[i]) === true) {
+          counter++;
+          if (counter > 1) {
+            return true;
+          }
+        }
+      }
+      
       return false; 
     },
 
