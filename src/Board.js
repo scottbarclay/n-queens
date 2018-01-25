@@ -161,7 +161,10 @@
 
     // test if any minor diagonals on this board contain conflicts
     hasAnyMinorDiagonalConflicts: function() {
-      
+      //set var occurrences = {};
+      //iterate through column at each row
+      //call hasMinorDiagonalConflictAt on each iteration
+      //if true, return true
       return false;
     }
 
