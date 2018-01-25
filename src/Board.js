@@ -275,7 +275,7 @@
         var rowIndex = toggles[j][0];
         // column coordinate
         var columnIndex = toggles[j][1];
-        if (this.hasMajorDiagonalConflictAt(rowIndex, columnIndex)) {
+        if (this.hasMinorDiagonalConflictAt(rowIndex, columnIndex)) {
           //if theres conflict, return true
           return true;
         }
