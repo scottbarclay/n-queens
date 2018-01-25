@@ -130,12 +130,19 @@
     //
     // test if a specific major diagonal on this board contains a conflict
     hasMajorDiagonalConflictAt: function(majorDiagonalColumnIndexAtFirstRow) {
-      return false; // fixme
+      //set counter var
+      //iterate board[i][major index]
+      //if true, increment counter
+      //return false if none
+      return false; 
     },
 
     // test if any major diagonals on this board contain conflicts
     hasAnyMajorDiagonalConflicts: function() {
-      return false; // fixme
+      //incrementing row and col for major
+      //call hasMajorDiagonalConflictAt method on each row in board
+      //if true, return true,
+      return false; 
     },
 
 
