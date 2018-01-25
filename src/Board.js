@@ -88,7 +88,7 @@
         var row = this.get(rowIndex);
         // for each column in row
         for (var col = 0; col < size; col++) {
-          //   if there is a piece, increment counter
+          // if there is a piece, increment counter
           if (row[col] === 1) {
             counter++;
             // if counter > 1, return true
@@ -105,22 +105,16 @@
     // test if any rows on this board contain conflicts
     hasAnyRowConflicts: function() {
       // debugger;
-      //iterating through board array by array[i][j]
-      //calls hasRowConflictAt for each row
-      //for board[i][j], if true, return true
-      //else return false
-      var size = this.length;
-      var counter = 0;
+      var size = this.get('n');
   
-      for (var i = 0; i < size; i++) {
-        if (hasRowConflict(Board[i]) === true) {
-          counter++;
-          if (counter > 1) {
-            return true;
-          }
+      //iterate row of board...  
+      for (var row = 0; row < size; row++) {
+        //see if there's conflict in current row
+        if (this.hasRowConflictAt(row)) {
+          return true;
         }
       }
-      
+      // if there's no conflict
       return false; 
     },
 
