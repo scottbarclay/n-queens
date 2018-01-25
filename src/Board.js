@@ -169,19 +169,53 @@
     // --------------------------------------------------------------
     //
     // test if a specific major diagonal on this board contains a conflict
-    hasMajorDiagonalConflictAt: function(majorDiagonalColumnIndexAtFirstRow) {
-      //set counter var
-      //iterate board[i][major index]
-      //if true, increment counter
-      //return false if none
+    hasMajorDiagonalConflictAt: function(rowIndex, columnIndex) {
+      //set counter to index passed
+      // var counter = majorDiagonalColumnIndexAtFirstRow;
+      //set size to board size
+      var size = this.get('n');
+      // if not at row 0, decrement to check up
+      //loop throw rows beginning at 2nd row
+      for (var row = rowIndex + 1; row < size; row++) {
+        //check if row sub counter is toggled on
+        if (row[columnIndex + 1] === 1) {
+          //if it is, return true to show conflict
+          return true;
+        }
+      }
+      //return false if no conflict at all
       return false; 
     },
 
     // test if any major diagonals on this board contain conflicts
     hasAnyMajorDiagonalConflicts: function() {
-      //incrementing row and col for major
-      //call hasMajorDiagonalConflictAt method on each row in board
-      //if true, return true,
+      //set size of board
+      var size = this.get('n');
+      //set temporary array to capture toggle index  coordinates in row
+      var toggles = [];
+      //loop through row 
+      for (var row = 0; row < size; row++) {
+        //loop through column
+        for (var col = 0; col < size; col++) {
+          //if there's a piece there, store piece coordinates in temp. array
+          if (this.get(row)[col] === 1) {
+            toggles.push([row, col]);
+          }
+        }
+      }
+      //loop through temp. array and call hasMajorConflictDiag.. on each coordinate
+      for (var j = 0; j < toggles.length; j++) {
+        // row coordinate
+        var rowIndex = toggles[j][0];
+        // column coordinate
+        var columnIndex = toggles[j][1];
+        if (this.majorDiagonalColumnIndexAt(rowIndex, columnIndex)) {
+          //if theres conflict, return true
+          return true;
+        }
+      }
+      
+      //if no toggles, return false 
       return false; 
     },
 
