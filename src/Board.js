@@ -174,13 +174,18 @@
       // var counter = majorDiagonalColumnIndexAtFirstRow;
       //set size to board size
       var size = this.get('n');
-      // if not at row 0, decrement to check up
-      //loop throw rows beginning at 2nd row
+      //get row that rowIndex references
+      var row = this.get(rowIndex);
+
+      //loop throw rows beginning at row index passed in
       for (var row = rowIndex + 1; row < size; row++) {
+        //loop through column of the row
+        for (var col = columnIndex + 1; col < size; col++) {
+          if (this.get(row)[col] === 1) {
+            //if it is, return true to show conflict
+            return true;
+          }
         //check if row sub counter is toggled on
-        if (row[columnIndex + 1] === 1) {
-          //if it is, return true to show conflict
-          return true;
         }
       }
       //return false if no conflict at all
@@ -190,6 +195,7 @@
     // test if any major diagonals on this board contain conflicts
     hasAnyMajorDiagonalConflicts: function() {
       //set size of board
+      // debugger;
       var size = this.get('n');
       //set temporary array to capture toggle index  coordinates in row
       var toggles = [];
@@ -209,7 +215,7 @@
         var rowIndex = toggles[j][0];
         // column coordinate
         var columnIndex = toggles[j][1];
-        if (this.majorDiagonalColumnIndexAt(rowIndex, columnIndex)) {
+        if (this.hasMajorDiagonalConflictAt(rowIndex, columnIndex)) {
           //if theres conflict, return true
           return true;
         }
@@ -225,20 +231,57 @@
     // --------------------------------------------------------------
     //
     // test if a specific minor diagonal on this board contains a conflict
-    hasMinorDiagonalConflictAt: function(minorDiagonalColumnIndexAtFirstRow) {
-      //set counter  
-      //incrementing row and decrementing cols, board[i][minor Idx - 1]
-      //if value is true, increment counter, if counter > 1, return true
-      //return false if none
+    hasMinorDiagonalConflictAt: function(rowIndex, columnIndex) {
+      //set size to board size
+      var size = this.get('n');
+      //get row that rowIndex references
+      var row = this.get(rowIndex);
+
+      //loop throw rows beginning at row index passed in
+      for (var row = rowIndex + 1; row < size; row++) {
+        //loop through column of the row
+        for (var col = columnIndex - 1; col >= 0; col--) {
+          if (this.get(row)[col] === 1) {
+            //if it is, return true to show conflict
+            return true;
+          }
+        //check if row sub counter is toggled on
+        }
+      }
+      //return false if no conflict at all
       return false; 
     },
 
     // test if any minor diagonals on this board contain conflicts
     hasAnyMinorDiagonalConflicts: function() {
-      //set var occurrences = {};
-      //iterate through column at each row
-      //call hasMinorDiagonalConflictAt on each iteration
-      //if true, return true
+      //set size of board
+      // debugger;
+      var size = this.get('n');
+      //set temporary array to capture toggle index  coordinates in row
+      var toggles = [];
+      //loop through row 
+      for (var row = 0; row < size; row++) {
+        //loop through column
+        for (var col = size - 1; col >= 0; col--) {
+          //if there's a piece there, store piece coordinates in temp. array
+          if (this.get(row)[col] === 1) {
+            toggles.push([row, col]);
+          }
+        }
+      }
+      //loop through temp. array and call hasMajorConflictDiag.. on each coordinate
+      for (var j = 0; j < toggles.length; j++) {
+        // row coordinate
+        var rowIndex = toggles[j][0];
+        // column coordinate
+        var columnIndex = toggles[j][1];
+        if (this.hasMajorDiagonalConflictAt(rowIndex, columnIndex)) {
+          //if theres conflict, return true
+          return true;
+        }
+      }
+      
+      //if no toggles, return false 
       return false;
     }
 
