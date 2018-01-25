@@ -62,7 +62,7 @@
     },
 
 
-/*
+  /*
          _             _     _
      ___| |_ __ _ _ __| |_  | |__   ___ _ __ ___ _
     / __| __/ _` | '__| __| | '_ \ / _ \ '__/ _ (_)
@@ -79,14 +79,25 @@
     //
     // test if a specific row on this board contains a conflict
     hasRowConflictAt: function(rowIndex) {
-      //set count var as container
+      //set count var
+      var counter = 0;
       //iterating through row
       //if row index _isInBounds then we do our iteration
-
-      //if true, increment counter
-      //if counter > 1, return true to indicate conflict
+      this.get('n');
+      
+      if (rowIndex < n) {
+        for (var i = 0; i < n; i++) {
+          if (rowIndex[i] === 0) {
+            //if true, increment counter
+            //if counter > 1, return true to indicate conflict
+            counter++;
+            return counter > 1;
+          }
+        }   
+      }
       //return false
-      return false; // fixme
+      // return counter > 1; 
+      return false;
     },
 
     // test if any rows on this board contain conflicts
