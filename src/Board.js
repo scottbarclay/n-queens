@@ -125,12 +125,24 @@
     //
     // test if a specific column on this board contains a conflict
     hasColConflictAt: function(colIndex) {
-
-      //set counter var
-      //use for key in Board loop. iterate through Board.key[colIndex].
-      //increment counter 
-      //if counter > 1, return true
-      //else false
+      //set conflict counter var to 0;
+      var counter = 0;
+      //abbreviate colIndex in a variable
+      var col = colIndex;
+      //get board size
+      var size = this.get('n');
+      //iterate through rows to check col to see if piece exist
+      for (var row = 0; row < size; roww++) {
+        if (row[col] === 1) {
+          //increment counter if there is a piece
+          counter++;
+          if (counter > 1) {
+            //if counter > 1, return true
+            return true;
+          }
+        }
+      }
+      //if there's no conflict
       return false; 
     },
 
