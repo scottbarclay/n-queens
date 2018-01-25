@@ -132,8 +132,9 @@
       //get board size
       var size = this.get('n');
       //iterate through rows to check col to see if piece exist
-      for (var row = 0; row < size; roww++) {
-        if (row[col] === 1) {
+      for (var i = 0; i < size; i++) {
+        // row = this.get(i);
+        if (this.get(i)[col] === 1) {
           //increment counter if there is a piece
           counter++;
           if (counter > 1) {
@@ -148,9 +149,16 @@
 
     // test if any columns on this board contain conflicts
     hasAnyColConflicts: function() {
-      //var board = this.get('n')
-      //calls hasColConflictAt n times
-      //if method returns true, return true
+      // debugger;
+      //get board size
+      var size = this.get('n');
+      //check each row to see if there's conflict
+      for (var i = 0; i < size; i++) {
+        //if there's a conflict in the col, return true
+        if (this.hasColConflictAt(i)) {
+          return true;
+        }
+      }
       //return false if none
       return false;
     },
